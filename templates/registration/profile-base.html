@@ -1,0 +1,131 @@
+{% load static %}
+{% load gravatar %}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex,nofollow">
+        <title>دریابان | {% block title %}{% endblock %}</title>
+        {# <link rel="stylesheet" href="{% static 'cleanWorld/css/bootstrap.min.css' %}"> #}
+        <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+        <link rel="icon" href="{% static 'cleanWorld/image/favicon.ico' %}" type="image/x-icon">
+        <link href="{% static 'cleanWorld/css/style-panel.css' %}" rel="stylesheet">
+        <link href="{% static 'cleanWorld/css/carousel.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+    <div class="wrapper"></div>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+                    <div class="row">
+                        <div class="d-md-none col-md-3"></div>
+                    </div>
+                    <a class="navbar-brand" href="{% url 'cleanWorld:home' %}">
+                        <b class="logo-icon">
+                            <img style="width: 47px; margin-right: -4px;" src="{% static 'cleanWorld/image/logo.jpg' %}" alt="homepage" />
+                        </b>
+                    </a>
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                    href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
+                        <li>
+                            <a class="profile-pic" href="{% url 'account:profile' %}">
+                                <img src="{% gravatar_url user.email 150 %}" alt="{{user.email}}" width="36"class="img-circle"><span class="text-white font-medium">
+                                    {% if user.get_full_name %}
+                                        {{ user.get_full_name }}
+                                    {% else %}
+                                        {{ user.username }}
+                                    {% endif %}
+                                </span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        {% if user.is_superuser %}
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin"
+                                aria-expanded="false">
+                                <i class="far fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">پنل مدیریت</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'account:dashboard' %}"
+                                aria-expanded="false">
+                                <i class="far fa-clock" aria-hidden="true"></i>
+                                <span class="hide-menu">محیط کاربری</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'account:profile' %}"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">پروفایل</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'account:dirtyPlaces' 1 %}"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">لیست مکان های آلوده</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'account:report' %}"
+                                aria-expanded="false">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                <span class="hide-menu">گزارش آلودگی</span>
+                            </a>
+                        </li>
+                        <li class="text-center p-20 upgrade-btn">
+                            <a href="{% url 'logout' %}"
+                                class="btn d-grid btn-danger text-white">
+                                خروج</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+    	{% block main %}
+    	{% endblock %}
+
+                <footer dir="ltr" class="footer text-center">
+                 {% if current_year %}
+                    Copyright © {{current_year}}
+                 {% endif %}
+                 <a href="https://t.me/OxMoh4mmad">MohammadKhalaj</a>
+                    <p>All rights reserved.</p>
+                </footer>
+            </div>
+        <script src="{% static 'cleanWorld/plugins/bower_components/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'cleanWorld/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'cleanWorld/js/app-style-switcher.js' %}"></script>
+        <script src="{% static 'cleanWorld/js/waves.js' %}"></script>
+        <script src="{% static 'cleanWorld/js/sidebarmenu.js' %}"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr9rkEqudDrA_HAnz8ydRxAnlHnrsql1Q"></script>
+        <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
+        <script src="{% static 'cleanWorld/js/custom.js' %}"></script>
+        <script src="{% static 'cleanWorld/js/carousel.js' %}"></script>
+    </body>
+</html>

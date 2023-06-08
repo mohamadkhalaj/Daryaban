@@ -1,0 +1,135 @@
+img {
+  vertical-align: middle;
+}
+
+.container {
+  position: relative;
+}
+
+.mySlides {
+  display: none;
+  text-align: center;
+  background-color: aliceblue;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+.next {
+  right: 24px;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(1, 1, 1, 0.2);
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.preview {
+  margin-top: 15px;
+  background-color: aliceblue;
+}
+
+.imageView {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 7px;
+  z-index: 100;
+  width: 90%;
+  height: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba( 0, 0, 0, 0.6);
+  z-index: 99;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.wrapper-show {
+  opacity: 1;
+  visibility: visible; 
+}
+
+.imageView-show {
+  visibility: visible; 
+  opacity: 1;
+}
+
+.imageHeaderLogo {
+  cursor: pointer;
+}
+
+.imageHeaderLogo:hover {
+  color:  red;
+}
+
+.imageHeader {
+  font-size: xx-large;
+  margin: 0 15px;
+}
+
+.imageViewImage {
+  max-height: 500px;
+}
+
+.imagesItem {
+  cursor: pointer;
+  height: 400px;
+}

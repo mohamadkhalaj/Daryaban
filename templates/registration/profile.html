@@ -1,0 +1,59 @@
+
+{% extends 'registration/profile-base.html' %}
+{% block title %}پروفایل{% endblock %}
+
+{% block main %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load gravatar %}
+
+	<div class="page-wrapper">
+		<div class="page-breadcrumb bg-white">
+			<div class="row align-items-center">
+				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					<h4 class="page-title">پروفایل</h4>
+				</div>
+				<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-8 col-xlg-9 col-md-12">
+					<div class="card">
+						<div class="card-body">
+							<form method="post" class="form-horizontal form-material">
+								{% csrf_token %}
+								{{ form.first_name|as_crispy_field }}
+								{{ form.last_name|as_crispy_field }}
+								{{ form.username|as_crispy_field }}
+								{{ form.email|as_crispy_field }}
+								<p class="alert-danger" style="height: 80px; padding: 10px;">برای تغییر رمزعبور برروی این <a href="{% url 'password_change' %}">لینک</a> کلیک کنید.</p>
+								<button class="btn d-grid btn-danger text-white">ویرایش اطلاعات</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xlg-3 col-md-12">
+					<div class="white-box">
+						<div class="user-bg"> <img width="100%" alt="{{user.email}}" src="{% gravatar_url user.email 150 %}">
+							<div class="overlay-box">
+								<div class="user-content">
+									<img src="{% gravatar_url user.email 150 %}" class="thumb-lg img-circle" alt="{{user.email}}">
+									<h4 class="text-white mt-2">
+										{% if user.get_full_name %}
+	                                        {{ user.get_full_name }}
+	                                    {% else %}
+	                                        {{ user.username }}
+	                                    {% endif %}
+									</h4>
+									<h5 class="text-white mt-2">{{user.email}}</h5>
+									<h5 class="text-white mt-2">عضویت از: {{user.date_joined}}</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

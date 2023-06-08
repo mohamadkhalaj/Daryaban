@@ -1,0 +1,282 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+	<title>دریابان | خانه</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="{% static 'cleanWorld/image/favicon.ico' %}" type="image/x-icon">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="{% static 'cleanWorld/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'cleanWorld/css/owl.theme.default.css' %}">
+	<link rel="stylesheet" href="{% static 'cleanWorld/css/materialdesignicons.min.css' %}">
+	<link rel="stylesheet" href="{% static 'cleanWorld/css/aos.css' %}">
+	<link rel="stylesheet" href="{% static 'cleanWorld/css/style.min.css' %}">
+	<link rel="stylesheet" href="{% static 'cleanWorld/css/style.css' %}">
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+	<header id="header-section">
+		<nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+			<div class="container">
+				<div class="navbar-brand-wrapper d-flex">
+					<a class="d-none d-lg-block" href="{% url 'cleanWorld:home' %}"><img src="{% static 'cleanWorld/image/logo.jpg' %}" class="navLogo"> دنیایی پاکیزه تر داشته باشیم</a>
+					<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="mdi mdi-menu navbar-toggler-icon"></span>
+					</button> 
+					<div class="row">
+						<div class="col mobileHeader">
+							<a href="{% url 'cleanWorld:home' %}"><img class="siteLogoHome d-lg-none" src="{% static 'cleanWorld/image/logo.jpg' %}"><b class="d-lg-none"> دنیایی پاکیزه تر داشته باشیم.</b></a>
+						</div>
+					</div>
+				</div>
+				<div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+					<ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+						<li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+							<div class="navbar-collapse-logo">
+								<img class='navLogo' src="{% static 'cleanWorld/image/logo.jpg' %}" alt="">
+							</div>
+							<button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+							</button>
+						<li class="nav-item">
+							<a class="nav-link" href="#header-section">خانه<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'account:dashboard' %}">مشارکت</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#features-section">درباره پروژه</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#case-studies-section">اعضای تیم</a>  
+						</li>
+						{% if user.is_authenticated %}
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'logout' %}">خروج</a>  
+							</li>
+						{% endif %}
+						<li class="nav-item btn-contact-us pl-4 pl-lg-0">
+							<button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">ارتباط با دریابان</button>
+						</li>
+					</ul>
+				</div>
+			</div> 
+		</nav>   
+	</header>
+	<div class="banner headerImage" >
+		<img width="100%" height="700px" src="{% static 'cleanWorld/image/garbage.jpg' %}">
+		<h1 class="font-weight-semibold typeWritercentered">
+			<a href="" class="typewrite" data-period="2000" data-type='[ "در پاکیزه کردن سواحل و دریا سهیم باشیم!", "سالانه هزاران آبزی به علت آلودگی دریا ها جان خود را از دست میدهند!"]'>
+				<span class="wrap"></span>
+			</a>
+		</h1>
+	</div>
+	<div class="content-wrapper" align="center">
+		<div class="container">
+			<section class="features-overview" id="features-section" >
+				<div class="content-header">
+					<h2>چگونه میتوانیم کمک کنیم؟</h2>
+				</div>
+				<div class="d-md-flex justify-content-between row">
+					<div class="col-12 col-md-4 col-lg-4">
+						<div class="features-width">
+							<img src="{% static 'cleanWorld/image/rocket.png' %}" alt="" class="img-icons logos">
+							<h5 class="py-3">ثبت نام کنید</h5>
+							<p class="text-muted">برای ثبت نام کافی است برروی <a href="{% url 'account:dashboard' %}">مشارکت</a> کلیک کنید تا براحتی به ما بپیوندید.</p> 
+						</div>
+					</div>
+					<div class="col-12 col-md-4 col-lg-4">
+						<div class="features-width">
+							<img src="{% static 'cleanWorld/image/sheet.png' %}" alt="" class="img-icons logos">
+							<h5 class="py-3">گزارش دهید</h5>
+							<p class="text-muted">زباله های گزارش شده در نقشه مشخص هستند. شما هم اگر زباله ای دیدید می توانید آن را گزارش دهید.</p>
+						</div>
+					</div>
+					<div class="col-12 col-md-4 col-lg-4">
+						<div class="features-width">
+							<img src="{% static 'cleanWorld/image/clean.png' %}" alt="" class="img-icons logos">
+							<h5 class="py-3">پاکسازی کنید!</h5>
+							<p class="text-muted">شروع به جمع کردن کنیم...</p>
+						</div>
+					</div>
+				</div>
+			</section>     
+			<section class="digital-marketing-service" style="margin-top: 50px;" id="digital-marketing-section">
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
+						<h3 class="m-0">زباله ها باعث کشته شدن آبزیان میشوند!</h3>
+						<div class="col-lg-7 col-xl-6 p-0">
+							<p class="py-4 m-0 text-muted fact">زباله ها در خشکی باعث تولید گازهای گلخانه ای و در آب با پخش سم باعث مرگ موجودات زنده میشوند.</p>
+						</div>    
+					</div>
+					<div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0 d-lg-block" data-aos="fade-right">
+						<img src="{% static 'cleanWorld/image/man1.png' %}" alt="" class="img-fluid">
+					</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-7 text-center flex-item grid-margin d-lg-block" data-aos="fade-right">
+						<img src="{% static 'cleanWorld/image/man2.png' %}" alt="" class="img-fluid">
+					</div>
+					<div class="col-12 col-lg-5 flex-item grid-margin" data-aos="fade-right">
+						<h3 class="m-0">آلوده شدن آب های زیرزمینی!</h3>
+						<div class="col-lg-9 col-xl-8 p-0">
+							<p class="py-4 m-0 text-muted fact">به خاطر بالا بودن سطح آب های زیرزمینی در سواحل، زباله ها در این مناطق میتوانند باعث آلودگی آب های زیرزمینی شود.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
+						<h3 class="m-0">هزینه بسیار بالای پاکسازی آب ها!</h3>
+						<div class="col-lg-7 col-xl-6 p-0">
+							<p class="py-4 m-0 text-muted fact">برای جمع آوری یک تن زباله در ساحل 30 دلار هزینه میشود در صورتیکه که اگر همین مقدار زباله وارد آب شود، 100,000 دلار برای پاکسازی آن لازم است.</p>
+						</div>    
+					</div>
+					<div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0 d-lg-block" data-aos="fade-right">
+						<img src="{% static 'cleanWorld/image/man3.png' %}" alt="" class="img-fluid">
+					</div>
+				</div>
+			</section>     
+			<section class="case-studies" id="case-studies-section">
+				<div class="row grid-margin">
+					<div class="col-12 text-center pb-5">
+						<h2>اعضای تیم</h2>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-12 col-lg-4 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
+						<div class="card color-cards">
+							<div class="card-body p-0">
+								<div class="bg-primary text-center card-contents">
+									<div class="card-image">
+										<img src="{% static 'cleanWorld/image/profile2.png' %}" class="case-studies-card-img" alt="">
+									</div>  
+									<div class="card-desc-box d-flex align-items-center justify-content-around">
+										<div>
+											<h6 class="text-white pb-2 px-3"></h6>
+										</div>
+									</div>
+								</div>   
+								<div class="card-details text-center pt-4">
+										<h6 class="m-0 pb-1">علی پوریان</h6>
+										<p>CEO, Marketing</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-4 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+						<div class="card color-cards">
+							<div class="card-body p-0">
+								<div class="bg-warning text-center card-contents">
+									<div class="card-image">
+											<img src="{% static 'cleanWorld/image/profile1.png' %}" class="case-studies-card-img" alt="">
+									</div>  
+									<div class="card-desc-box d-flex align-items-center justify-content-around">
+										<div>
+											<h6 class="text-white pb-2 px-3"></h6>
+										</div>
+									</div>
+								</div>   
+								<div class="card-details text-center pt-4">
+										<h6 class="m-0 pb-1">محمد مهدی خلج</h6>
+										<p>Developing, Designing</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-2"></div>
+				</div>
+			</section>     
+			<section class="contact-us" id="contact-section">
+				<div class="contact-us-bgimage grid-margin" >
+					<div class="pb-4">
+						<h4 class="px-3 px-md-0 m-0" data-aos="fade-down">سوالی دارید؟</h4>
+					</div>
+					<div data-aos="fade-up">
+						<button class="btn btn-rounded btn-outline-danger" data-toggle="modal" data-target="#exampleModal">ارتباط با دریابان</button>
+					</div>          
+				</div>
+			</section>
+
+			<footer class="border-top">
+				<p class="aboutus">
+					<a href='https://www.instagram.com/daryaban.ir/'>
+					<img class="social-logo" src="{% static 'cleanWorld/image/insta.png' %}" alt="instagram">
+					</a>
+
+					<a href='https://twitter.com/daryaban_ir'><img class="social-logo" src="{% static 'cleanWorld/image/twitter.svg' %}" alt="twitter">
+					</a>
+				</p>
+				<p class="text-center text-muted pt-4 aboutus">Copyright © {{current_year}}<a href="https://t.me/OxMoh4mmad" class="px-1">MohammadKhalaj</a>All rights reserved.</p>
+			</footer>
+			<!-- Modal for Contact - us Button -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="exampleModalLabel">ارتباط با دریابان</h4>
+						</div>
+						<div class="modal-body">
+							<form method="get">
+								{% csrf_token %}
+								<div class="form-group">
+									<label class="float-right" for="Name">نام</label>
+									{{form.name|add_class:"form-control"|attr:"autofocus"}}
+									{% if form.name.errors %}
+										<div class="alert-danger">
+											{% for error in form.name.errors %}
+												<span>{{error}}</span>
+											{% endfor %}
+										</div>
+									{% endif %}
+								</div>
+								<div class="form-group">
+									<label class="float-right" for="Email">آدرس ایمیل</label>
+									{{form.email|add_class:"form-control"|attr:"autofocus"}}
+									{% if form.email.errors %}
+										<div class="alert-danger">
+											{% for error in form.email.errors %}
+												<span>{{error}}</span>
+											{% endfor %}
+										</div>
+									{% endif %}
+								</div>
+								<div class="form-group">
+									<label class="float-right" for="Message">متن پیام</label>
+									{{form.text|add_class:"form-control"|attr:"autofocus"}}
+									{% if form.text.errors %}
+										<div class="alert-danger">
+											{% for error in form.text.errors %}
+												<span>{{error}}</span>
+											{% endfor %}
+										</div>
+									{% endif %}
+								</div>
+								<div class="form-group">
+									{{form.hcaptcha|add_class:"form-control"|attr:"autofocus"|attr:"style:text-align:center;"}}
+									{% if form.hcaptcha.errors %}
+										<div class="alert-danger">
+											{% for error in form.hcaptcha.errors %}
+												<span>تایید کنید که شما یک انسان هستید.</span>
+											{% endfor %}
+										</div>
+									{% endif %}
+								</div>
+								<div class="modal-footer">
+									<button style="color: white; background-color: red; margin-left: auto;" type="button" class="btn btn-light" data-dismiss="modal">بستن</button>
+									<button style="color: white; background-color: green;" type="submit" class="btn btn-success">ارسال</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div>
+	<script src="{% static 'cleanWorld/js/jquery-min.js' %}"></script>
+	<script src="{% static 'cleanWorld/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'cleanWorld/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'cleanWorld/js/aos.js' %}"></script>
+	<script src="{% static 'cleanWorld/js/landingpage.js' %}"></script>
+</body>
+</html>

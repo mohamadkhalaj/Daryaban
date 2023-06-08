@@ -1,0 +1,115 @@
+
+{% extends 'registration/profile-base.html' %}
+{% block title %}محیط کاربری{% endblock %}
+
+{% block main %}
+{% load static %}
+{% load humanize %}
+
+<div class="page-wrapper">
+<div class="page-breadcrumb bg-white">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">محیط کاربری</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">مجموع گزارشات شما</h3>
+                <ul class="numbers">
+                    <li class="ms-auto"><span class="counter text-success">{{user_reports.count}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">مجموع پاکیزه کردن شما</h3>
+                <ul class="numbers">
+                    <li class="ms-auto"><span class="counter text-purple">{{user_cleans.count}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">گزارشات تمیز نشده</h3>
+                <ul class="numbers">
+                    <li class="ms-auto"><span class="counter text-success">{{all_reminded_reports.count}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">گزارشات ثبت شده</h3>
+                <ul class="numbers">
+                    <li class="ms-auto"><span class="counter text-success">{{all_reports.count}}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            {% if dirty %}
+            <div class="white-box">
+                <div class="d-md-flex mb-3">
+                    <h3 class="box-title mb-0">سوابق گزارشات شما</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">ردیف</th>
+                                <th class="border-top-0">تاریخ گزارش</th>
+                                <th class="border-top-0">محل آلودگی</th>
+                                <th class="border-top-0">نوع آلودگی</th>
+                                <th class="border-top-0">وضعیت</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in dirty %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{row.reportedAt|naturaltime}}</td>
+                                <td><a href="{% url 'account:dirtyAddress' row.coordinates|striptags %}">مشاهده آدرس</a></td>
+                                <td>
+                                   <span class="alert-danger">
+                                       {% for cat in row.garbageType.all %}
+                                            #{{cat.title|striptags}}
+                                        {% endfor %}
+                                   </span>
+                                </td>
+                                <td>
+                                    {% if row.cleanedStatus %}
+                                        <a href="{% url 'account:CleanerProfile' row.pk %}" style="width:100%" class="btn btn-success text-white mb-3">پاکیزه شده است!</a>       
+                                    {% else %}
+                                        <a href="{% url 'account:removeReport' row.pk %}" style="width:100%" class="btn btn-danger text-white mb-3">حذف</a>
+                                    {% endif %}
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <span>
+                        صفحه {{ dirty.number }} از {{ dirty.paginator.num_pages }}
+                    </span>
+                    {% if dirty.has_previous %}
+                        <a href="{% url 'account:dashboard' dirty.previous_page_number %}" style="margin-right:5px" class="btn btn-danger text-white mb-3">صفحه قبل</a>
+                    {% endif %}
+                    
+                    {% if dirty.has_next %}
+                        <a href="{% url 'account:dashboard' dirty.next_page_number %}" style="margin-right:5px" class="btn btn-danger text-white mb-3">صفحه بعد</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+                <p class="box-title alert-info"  style="height: 80px; padding: 10px;">سابقه ای وجود ندارد. در پاکیزه کردن زمین سهیم باش!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

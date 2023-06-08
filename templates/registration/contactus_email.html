@@ -1,0 +1,10 @@
+{% extends 'registration/email_base.html' %}
+{% block title %}{{page_title}}{% endblock %}
+
+{% block main %}
+
+<p style="margin: 0 0 16px;">شما یک پیام از طرف {{name}}، به آدرس ایمیل {{email}} دارید.</p>
+<p style="margin: 0 0 16px;">متن پیام به شرح زیر میباشد:</p>
+<p style="margin: 0 0 16px;">{{text}}</p>
+
+{% endblock %}

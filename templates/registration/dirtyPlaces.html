@@ -1,0 +1,73 @@
+{% extends 'registration/profile-base.html' %}
+{% block title %}لیست مکان های آلوده{% endblock %}
+
+{% block main %}
+{% load static %}
+{% load humanize %}
+
+<div class="page-wrapper">
+<div class="page-breadcrumb bg-white">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">لیست مکان های آلوده</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            {% if dirty %}
+            <div class="white-box">
+                <h3 class="box-title">مکان های آلوده</h3>
+                <div class="table-responsive">
+                    <table class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">ردیف</th>
+                                <th class="border-top-0">گزارشگر</th>
+                                <th class="border-top-0">تاریخ گزارش</th>
+                                <th class="border-top-0">محل آلودگی</th>
+                                <th class="border-top-0">نوع آلودگی</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in dirty %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td><a href="{% url 'account:userProfile' row.reporter.pk %}">{{row.reporter}}</a></td>
+                                <td>{{row.reportedAt|naturaltime}}</td>
+                                <td><a href="{% url 'account:dirtyAddress' row.coordinates|striptags %}">مشاهده</a></td>
+                                <td>
+                                   <span class="alert-danger">
+                                       {% for cat in row.garbageType.all %}
+                                            #{{cat.title|striptags}}
+                                        {% endfor %}
+                                   </span>
+                                </td>
+                                <td><a href="{% url 'account:makeClean' row.pk %}" class="btn d-grid btn-danger text-white">پاکیزه میکنم</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <span>
+                        صفحه {{ dirty.number }} از {{ dirty.paginator.num_pages }}
+                    </span>
+                    {% if dirty.has_previous %}
+                        <a href="{% url 'account:dirtyPlaces' dirty.previous_page_number %}" style="margin-right:5px" class="btn btn-danger text-white mb-3">صفحه قبل</a>
+                    {% endif %}
+                    
+                    {% if dirty.has_next %}
+                        <a href="{% url 'account:dirtyPlaces' dirty.next_page_number %}" style="margin-right:5px" class="btn btn-danger text-white mb-3">صفحه بعد</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+                <p class="box-title alert-danger"  style="height: 80px; padding: 10px;">گزارشی وجود ندارد.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'registration/email_base.html' %}
+{% block title %}{{page_title}}{% endblock %}
+
+{% block main %}
+
+<p style="margin: 0 0 16px;">سلام {{ user.username }},</p>
+<p style="margin: 0 0 16px;">برای فعال سازی برروی لینک زیر کلیک کنید.</p>
+<a style="  background-color: #cab49c;
+  border: 1px solid #cab49c;
+  font-size: 20px;
+  color: #FFFFFF;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 10%;
+  margin-bottom:5px;" href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">کلیک کنید</a>
+
+<p style="margin-top:15px">اگر لینک فوق در مرورگرتان باز نمیشود برروی لینک زیر کلیک کنید: </p>
+<a style="margin: 0 0 16px;" href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">http://{{ domain }}{% url 'activate' uidb64=uid token=token %}</a>
+
+{% endblock %}

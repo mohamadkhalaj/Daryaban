@@ -1,0 +1,119 @@
+{% extends 'registration/base.html' %}
+{% block title %}ثبت نام{% endblock %}
+
+{% block main %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="row">
+	<div class="col">
+		<a href="{% url 'cleanWorld:home' %}"><img class="siteLogo d-lg-none" src="{% static 'cleanWorld/image/logo.jpg' %}"></a>
+		<p class="info">ثبت نام</p>
+		{% if form.non_field_errors %}
+			<div class="alert-danger">
+				{% for error in form.non_field_errors %}
+					<span>{{error}}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+</div>	
+<div class="row">
+	<div class="col col-lg-3 col-md-3 d-none d-md-block">
+	
+	</div>
+	<div class="col col-lg-6 .d-block login-div">
+			<form method="POST" class="my-login-validation" novalidate="">
+				{% csrf_token %}
+				<div class="form-group">
+					<label class="float-right" for="name">نام کاربری</label>
+					{{form.username|add_class:"form-control"|attr:"autofocus"}}
+					{% if form.username.errors %}
+						<div class="alert-danger">
+							{% for error in form.username.errors %}
+								<span>{{error}}</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+					<div class="invalid-feedback">
+						نام کاربری نمیتواند خالی باشد
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="float-right" for="email">آدرس ایمیل</label>
+					{{form.email|add_class:"form-control"}}
+					{% if form.email.errors %}
+						<div class="alert-danger">
+							{% for error in form.email.errors %}
+								<span>{{error}}</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+					<div class="invalid-feedback">
+						آدرس ایمیل شما نمیتواند خالی باشد.
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="float-right" for="email">رمز عبور</label>
+					{{form.password1|add_class:"form-control"}}
+					{% if form.password1.errors %}
+						<div class="alert-danger">
+							{% for error in form.password1.errors %}
+								<span>{{error}}</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+					<div class="invalid-feedback">
+						   گذرواژه شما نمی‌تواند شبیه سایر اطلاعات شخصی شما باشد. رمز عبور شما می‌بایست حداقل از 8 حرف تشکیل شده باشد. گذرواژه شما نمی تواند کلا عدد باشد
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="float-right" for="password">تکرار رمز عبور</label>
+					{{form.password2|add_class:"form-control"}}
+					{% if form.password2.errors %}
+						<div class="alert-danger">
+							{% for error in form.password2.errors %}
+								<span>{{error}}</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+					<div class="invalid-feedback">
+						تکرار رمزعبور
+					</div>
+				</div>
+				<div class="form-group">
+					{{form.hcaptcha|add_class:"form-control"|attr:"autofocus"|attr:"style:text-align:center;"}}
+					{% if form.hcaptcha.errors %}
+						<div class="alert-danger">
+							{% for error in form.hcaptcha.errors %}
+								<span>تایید کنید که شما یک انسان هستید.</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+				<div class="form-group m-0">
+					<button type="submit" class="btn btn-primary btn-block">
+						ثبت نام
+					</button>
+				</div>
+				<br>
+				<div class="form-group m-0">
+					<a class="btn btn-danger btn-block" href="{% url 'social:begin' 'google-oauth2' %}">
+						ثبت نام با حساب گوگل
+						<img style="width:20px" src="{% static 'cleanWorld/image/google.png' %}" alt="google">
+					</a>
+				</div>
+				<div class="mt-4 text-center">
+					قبلا عضو شده اید؟ <a href="{% url 'login' %}">ورود</a>
+				</div>
+			</form>
+	</div>
+	<div class="col col-lg-3 col-md-3 d-none d-md-block">
+	
+	</div>
+</div>
+
+{% endblock %}

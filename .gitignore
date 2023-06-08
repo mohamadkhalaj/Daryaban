@@ -5,7 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
-
+.env
+staticfiles
+media
+.DS_Store
 # Distribution / packaging
 .Python
 build/

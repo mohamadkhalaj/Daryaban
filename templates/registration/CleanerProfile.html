@@ -1,0 +1,61 @@
+
+{% extends 'registration/profile-base.html' %}
+{% block title %}پروفایل کاربری | {{cleaner.username}}{% endblock %}
+
+{% block main %}
+{% load static %}
+{% load gravatar %}
+
+<div class="page-wrapper">
+<div class="page-breadcrumb bg-white">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">سوابق {{cleaner.username}}</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">مجموع گزارشات</h3>
+                <ul class="numbers">
+                    <li class="ms-auto"><span class="counter text-success">{{reports}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">مجموع پاکیزه کردن</h3>
+                <ul class="numbers">
+                    <li class="ms-auto"><span class="counter text-purple">{{cleans}}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            <div class="white-box">
+                <div class="user-bg"> <img width="100%" alt="{{cleaner.email}}" src="{% gravatar_url cleaner.email 150 %}">
+                    <div class="overlay-box">
+                        <div class="user-content">
+                            <img src="{% gravatar_url cleaner.email 150 %}" class="thumb-lg img-circle" alt="{{cleaner.email}}">
+                            <h4 class="text-white mt-2">
+                                {% if cleaner.get_full_name %}
+                                    {{ cleaner.get_full_name }}
+                                {% else %}
+                                    {{ cleaner.username }}
+                                {% endif %}
+                            </h4>
+                            <h5 class="text-white mt-2">{{cleaner.email}}</h5>
+                            <h5 class="text-white mt-2">عضویت از: {{cleaner.date_joined}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

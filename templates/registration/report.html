@@ -1,0 +1,89 @@
+{% extends 'registration/profile-base.html' %}
+{% block title %}گزارش مکان های آلوده{% endblock %}
+
+{% block main %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="page-wrapper">
+    <div class="page-breadcrumb bg-white">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">گزارش مکان های آلوده</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">مکان موردنظر را برروی نقشه مشخص کنید.</h3>
+                    {% if form.non_field_errors %}
+                        <div class="alert-danger">
+                            {% for error in form.non_field_errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="table-responsive">
+                        <div id="map" class="gmaps container-fluid" style="position: relative; overflow: hidden; height:600px">
+                            
+                        </div>
+                        <div class="map-data">
+                            <form method="post" enctype="multipart/form-data" class="my-login-validation" style="direction:rtl; text-align:center" novalidate="">{% csrf_token %}
+                                <div class="form-group">
+                                    <label class="float-right" for="address">آدرس</label>
+                                    {{form.address|add_class:"form-control"|attr:"id:address"|attr:"style:border:none; text-align:center; background-color: #f33155; color:white;"}}
+                                </div>
+                                <div class="form-group">
+                                    {{form.coordinates|add_class:"form-control"|attr:"type:hidden"|attr:"id:coordinates"}}
+                                    {% if form.coordinates.errors %}
+                                        <div class="alert-danger">
+                                            {% for error in form.coordinates.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group alert-danger">
+                                    <label for="garbageType" style="padding-top: 7px;">نوع آلودگی را انتخاب کنید (یک یا چند مورد)</label>
+                                    {{form.garbageType|add_class:"form-control"|attr:"type:hidden"|attr:"id:garbageType"|attr:"class:form-select form-select-lg mb-3"}}
+                                    {% if form.garbageType.errors %}
+                                        <div class="alert-danger">
+                                            {% for error in form.garbageType.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group alert-danger">
+                                    <label for="images" style="padding-top: 7px;">تصاویر مربوطه را آپلود کنید.<br>شما مجاز به آپلود حداکثر 6 عکس با فرمت های PNG, JPG, JPEG میباشید.</label>
+                                    <br>
+                                    <input type="file" id="images" name="images" multiple>
+                                    {% if messages %}
+                                        <div class="alert-danger mt-2">
+                                            {% for error in messages %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group m-0">
+                                        
+                                <button type="submit" class="btn d-grid btn-danger text-white mb-3" style="margin: 0 auto">
+                                    انتخاب مکان
+                                </button>
+                                        
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

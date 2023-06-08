@@ -1,0 +1,30 @@
+{% extends 'registration/base.html' %}
+{% block title %}{{title}}{% endblock %}
+
+{% block main %}
+{% load static %}
+
+<div class="row">
+	<div class="col">
+		<a href="{% url 'cleanWorld:home' %}"><img class="siteLogo d-lg-none" src="{% static 'cleanWorld/image/logo.jpg' %}"></a>
+		<p class="info">{{title}}</p>
+	</div>
+</div>		
+<div class="row">
+	<div class="col col-lg-3 col-md-3 d-none d-md-block">
+	</div>
+	<div class="col col-lg-6 .d-block login-div alerts">
+		<span class="alert-{{type}}">{{message}}</span>
+		<span>
+			{% if redirect %}
+				<a class="btn btn-danger btn-rounded waves-effect waves-light mt-3 text-white d-block" href="{% url redirect %}">بازگشت</a>
+			{% else %}
+				<a class="btn btn-danger btn-rounded waves-effect waves-light mt-3 text-white d-block" href="{{request.META.HTTP_REFERER}}">بازگشت</a>
+			{% endif %}
+		</span>
+	</div>
+	<div class="col col-lg-3 col-md-3 d-none d-md-block">
+	
+	</div>
+</div>
+{% endblock %}

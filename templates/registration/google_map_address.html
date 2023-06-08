@@ -1,0 +1,87 @@
+{% extends 'registration/profile-base.html' %}
+{% block title %}محل آلودگی{% endblock %}
+
+{% block main %}
+{% load static %}
+
+<div class="page-wrapper">
+    <div class="imageView">
+        <div class="imageHeader">
+            <span onclick="closeImage()" class="imageHeaderLogo">&#x00D7</span>
+        </div>
+        <div style="text-align: center;">
+            <img src="" id="tempImage", style="max-height:500px" class="img-fluid">
+        </div>
+        <div style="height: 47px;"></div>
+    </div>
+    <div class="page-breadcrumb bg-white">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">محل آلودگی</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        {% if dirtyPlace.images.all.count %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">تصاویر</h3>
+
+
+                    <div class="container" style="direction: ltr">
+
+                        {% for image in dirtyPlace.images.all %}
+                        <div class="mySlides">
+                            <div class="numbertext">{{forloop.counter}}</div>
+                            <img src="{{image.imageUrl}}" class="imagesItem img-fluid" onclick="openImage(this)" >
+                        </div>
+                        {% endfor %}
+
+                      <a class="prev" onclick="plusSlides(-1)">❮</a>
+                      <a class="next" onclick="plusSlides(1)">❯</a>
+
+                      <div class="row preview">
+                        {% for image in dirtyPlace.images.all %}
+                            <div class="column">
+                              <img class="demo cursor img-thumbnail" src="{{image.imageUrl}}" style="width:100%" onclick="currentSlide({{forloop.counter}})">
+                            </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">آدرس محل آلودگی</h3>
+                    <div class="table-responsive">
+                        <iframe width="100%" height="600" frameborder="0" style="border:0" src="https://maps.google.com/maps?q={{coordinates}}&t=k&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
+                    <div style="font-size: large; margin-top: 20px;">
+                        <span>آدرس محل آلودگی:</span>
+                        <span class="alert-danger">
+                            {{dirtyPlace.address}}
+                        </span>
+                    </div>
+                    <br>
+                    <div style="font-size: large;">
+                        <span>نوع آلودگی های موجود:</span>
+                        <span class="alert-danger">
+                            {% for cat in dirtyPlace.garbageType.all %}
+                                #{{cat.title}}
+                            {% endfor %}
+                        </span>
+                    </div>
+                    <a href="{% url 'account:makeClean' dirtyPlace.pk %}" class="mt-3 btn d-grid btn-success text-white">پاکیزه میکنم</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

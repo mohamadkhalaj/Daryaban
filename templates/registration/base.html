@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>دریابان | {% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="{% static 'cleanWorld/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'cleanWorld/css/style.css' %}">
+		<link rel="icon" href="{% static 'cleanWorld/image/favicon.ico' %}" type="image/x-icon">
+	</head>
+	<body>
+		
+		<div class="container">
+			
+			<nav id="navbar_top" class="navbar navbar-expand-lg navbar-light nav-fill">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button> 
+				
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+					<ul id="navElement" class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li class="nav-item">
+							<a href="{% url 'cleanWorld:home' %}"><img class="navLogo d-none d-lg-block" src="{% static 'cleanWorld/image/logo.jpg' %}"></a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'cleanWorld:home' %}">خانه</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'account:dashboard' %}">پنل کاربری</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			{% block main %}
+
+			{% endblock %}
+
+			<footer dir="ltr" class="footer text-center">
+				<p class="aboutus">
+					<a href='https://instagram.com/make_world_cleaner'>
+					<img class="social-logo" src="{% static 'cleanWorld/image/insta.png' %}" alt="instagram">
+					</a>
+
+					<a href='https://twitter.com/makecleaner'><img class="social-logo" src="{% static 'cleanWorld/image/twitter.svg' %}" alt="twitter">
+					</a>
+				</p>
+				<p class="aboutus">
+	                 {% if current_year %}
+	                    Copyright © {{current_year}}
+	                 {% endif %}
+	                 <a href="https://t.me/OxMoh4mmad">MohammadKhalaj</a>
+	                 All rights reserved.
+            	</p>
+            </footer>
+		</div>
+
+		<script src="{% static 'cleanWorld/js/jquery-min.js' %}"></script>
+		<script src="{% static 'cleanWorld/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'cleanWorld/js/script.js' %}"></script>
+	</body>
+</html>
