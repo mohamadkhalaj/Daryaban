@@ -1,5 +1,6 @@
 # EcoSavior
-At EcoSavior, we're dedicated to promoting sustainable living and environmental awareness. We believe that everyone has the power to make a positive impact on the world around them, and we're here to help you do just that. Our repository provides you with practical solutions for reducing waste, conserving resources, and protecting the environment, from eco-friendly product recommendations to tips and tricks for living sustainably. Whether you're an individual, a business, or a community, we're committed to helping you achieve your sustainability goals. Join us in our mission to create a better, more sustainable future!
+EcoReport is a Django website that allows users to report pollution in coasts, jungles, and other environments. Our goal is to help users identify and locate pollution so that it can be cleaned up and the environment can be restored. Whether you're an individual, a community, or an organization, EcoReport provides a platform for reporting and tracking pollution in a simple and efficient manner.
+
 # Features
 This project offers a range of features to help you report and clean up polluted areas, including:
 - A feature to add an image of the polluted area
@@ -59,4 +60,4 @@ python manage.py createsuperuser
 
 
 # Get Involved
-At EcoSavior, we're committed to making a positive impact on the environment, and we hope you'll join us in this important mission. We believe that everyone can make a difference, no matter how small their actions may seem. So why not start today? Explore our repository, connect with our community, and see how you can be an EcoSavior!
+At EcoReport, we believe that everyone can make a difference in protecting our environment. By reporting pollution and working together to clean it up, we can create a cleaner, healthier planet for ourselves and future generations. Join our community today and make a positive impact on the world around you!
