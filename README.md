@@ -16,9 +16,6 @@ This project offers a range of features to help you report and clean up polluted
 
 By using EcoSavior to report and clean up polluted areas, you'll be making a positive impact on the environment and helping to protect our planet for future generations.
 
-# Get Involved
-At EcoSavior, we're committed to making a positive impact on the environment, and we hope you'll join us in this important mission. We believe that everyone can make a difference, no matter how small their actions may seem. So why not start today? Explore our repository, connect with our community, and see how you can be an EcoSavior!
-
 # Compile
 ## Step 1
 ```
@@ -49,3 +46,17 @@ python manage.py createsuperuser
 ```
 
 # Screenshots
+
+![tg_image_2129009688](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/d81d32e3-5db7-4462-bae6-c90675d0bb0d)
+![Screenshot 2023-06-08 at 11-30-25 دریابان خانه](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/4a83065f-5825-4168-a2b5-b23d3db59b00)
+![Screenshot 2023-06-08 at 11-30-52 دریابان ورود](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/e0b242cd-7997-4991-a82b-37369ba0c3ae)
+![Screenshot 2023-06-08 at 11-31-01 دریابان ثبت نام](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/0110a45d-73b1-42ac-b6de-2bac0a34cf14)
+![Screenshot 2023-06-08 at 11-31-28 دریابان محیط کاربری](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/f7994b67-7870-4594-bd68-dbbefcf5e559)
+![Screenshot 2023-06-08 at 11-31-39 دریابان پروفایل کاربری mohammadkhalaj8](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/caae0337-5369-4c11-b0c6-fa3dfa86e3ea)
+![Screenshot 2023-06-08 at 11-31-47 دریابان لیست مکان های آلوده](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/677766ef-51af-4670-bee9-f24e907836a7)
+![Screenshot 2023-06-08 at 11-32-03 دریابان محل آلودگی](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/d447f1c1-ebe9-4835-a4f0-f1f7c47e894e)
+![Screenshot 2023-06-08 at 11-32-39 دریابان گزارش مکان های آلوده](https://github.com/mohamadkhalaj/EcoSavior/assets/62938359/eb95eb8b-331d-4682-9a8b-4721005600bc)
+
+
+# Get Involved
+At EcoSavior, we're committed to making a positive impact on the environment, and we hope you'll join us in this important mission. We believe that everyone can make a difference, no matter how small their actions may seem. So why not start today? Explore our repository, connect with our community, and see how you can be an EcoSavior!
