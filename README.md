@@ -1,5 +1,5 @@
-# EcoSavior
-EcoReport is a Django website that allows users to report pollution in coasts, jungles, and other environments. Our goal is to help users identify and locate pollution so that it can be cleaned up and the environment can be restored. Whether you're an individual, a community, or an organization, EcoReport provides a platform for reporting and tracking pollution in a simple and efficient manner.
+# Savior
+EcoSavior is a Django website that allows users to report pollution in coasts, jungles, and other environments. Our goal is to help users identify and locate pollution so that it can be cleaned up and the environment can be restored. Whether you're an individual, a community, or an organization, EcoSavior provides a platform for reporting and tracking pollution in a simple and efficient manner.
 
 # Features
 This project offers a range of features to help you report and clean up polluted areas, including:
@@ -60,4 +60,4 @@ python manage.py createsuperuser
 
 
 # Get Involved
-At EcoReport, we believe that everyone can make a difference in protecting our environment. By reporting pollution and working together to clean it up, we can create a cleaner, healthier planet for ourselves and future generations. Join our community today and make a positive impact on the world around you!
+At EcoSavior, we believe that everyone can make a difference in protecting our environment. By reporting pollution and working together to clean it up, we can create a cleaner, healthier planet for ourselves and future generations. Join our community today and make a positive impact on the world around you!
